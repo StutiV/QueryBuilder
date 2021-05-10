@@ -1,5 +1,11 @@
 import { useState } from "react";
 import QueryBuilder, { formatQuery, RuleGroupType } from "react-querybuilder";
+import combinators from "./combinators";
+import CombinatorSelector from "./CombinatorSelector";
+import fields from "./fields";
+import getOperators from "./getOperators";
+import translations from "./translations";
+import { Language } from "./types";
 
 function App() {
   const [query, setQuery] = useState<RuleGroupType>({
@@ -8,12 +14,24 @@ function App() {
     rules: [],
   });
 
+  const [language, setLanguage] = useState<Language>("en");
+
   return (
     <>
+      <select value={language} onChange={e => setLanguage(e.target.value as Language)}>
+        <option value="en">English</option>
+        <option value="es">Spanish</option>
+      </select>
       <QueryBuilder
-        fields={[{ name: "test", label: "Test" }]}
+        fields={fields}
+        getOperators={getOperators}
         query={query}
         onQueryChange={(q) => setQuery(q)}
+        translations={translations[language]}
+        combinators={combinators[language]}
+        controlElements={{
+          combinatorSelector:CombinatorSelector,
+        }}
       />
       <pre>{formatQuery(query, "sql")}</pre>
       <pre>{formatQuery(query, "json")}</pre>
