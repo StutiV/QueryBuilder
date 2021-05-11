@@ -17,7 +17,7 @@ const CombinatorSelector = ({
                         <input
                             type="radio"
                             name="combinatorSelector"
-                            checked={value == option.name}
+                            checked={value === option.name}
                             onChange={() => handleOnChange(option.name)}
                         />{" "}
                         {option.label}
