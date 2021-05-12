@@ -7,6 +7,7 @@ import getOperators from "./getOperators";
 import translations from "./translations";
 import { Language } from "./types";
 import ValueEditor from "./ValueEditor";
+import valueProcessor from "./valueProcessor";
 
 function App() {
   const [query, setQuery] = useState<RuleGroupType>({
@@ -14,7 +15,6 @@ function App() {
     combinator: "and",
     rules: [],
   });
-
   const [language, setLanguage] = useState<Language>("en");
 
   return (
@@ -35,7 +35,7 @@ function App() {
           valueEditor: ValueEditor,
         }}
       />
-      <pre>{formatQuery(query, "sql")}</pre>
+      <pre>{formatQuery(query, { format: "sql", valueProcessor })}</pre>
       <pre>{formatQuery(query, "json")}</pre>
     </>
   );
