@@ -1,0 +1,30 @@
+{
+  "name": "query",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon server/index.js",
+    "heroku-postbuild": "cd client && npm install && npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/StutiV/QueryBuilder.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/StutiV/QueryBuilder/issues"
+  },
+  "homepage": "https://github.com/StutiV/QueryBuilder#readme",
+  "dependencies": {
+    "dotenv": "^9.0.2",
+    "express": "^4.17.1",
+    "pg": "^8.6.0",
+    "react-querybuilder": "^3.9.9"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
